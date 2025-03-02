@@ -1,10 +1,18 @@
-import { Box, Heading, SimpleGrid, Spinner, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Heading,
+  SimpleGrid,
+  Skeleton,
+  Text,
+  useBreakpointValue,
+} from "@chakra-ui/react";
+import bgimg from "../../assets/ProductsBack.jpg";
 import useFetchProducts from "../../hooks/useFetchProducts";
 import ProductCard from "./ProductCard";
-import bgimg from "../../assets/ProductsBack.jpg";
 const ProductsSection = () => {
-  const { data, isLoading } = useFetchProducts();
-  if (isLoading) return <Spinner />;
+  const { data } = useFetchProducts();
+  const columns = useBreakpointValue({ base: 1, sm: 2, md: 3 });
+  const imageHeight = useBreakpointValue({ base: 150, md: 200 });
   return (
     <Box
       id="products"
@@ -54,6 +62,24 @@ const ProductsSection = () => {
             Products
           </Text>
         </Heading>
+        {!data && (
+          <SimpleGrid
+            columns={columns}
+            spacing={[4, 6, 8]}
+            px={[2, 4, 6]}
+            py={[4, 6]}
+          >
+            {[...Array(6)].map((_, i) => (
+              <Skeleton
+                key={i}
+                height={`${imageHeight}px`}
+                borderRadius="xl"
+                startColor="gray.50"
+                endColor="gray.100"
+              />
+            ))}
+          </SimpleGrid>
+        )}
         <SimpleGrid columns={[1, 2, 3, 4]} spacing={6}>
           {data &&
             data.data.map((product) => (

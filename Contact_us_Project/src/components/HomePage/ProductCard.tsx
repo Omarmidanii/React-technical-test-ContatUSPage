@@ -33,12 +33,12 @@ const ProductCard = ({ product }: ProductProps) => {
     >
       <Box position="relative" h="200px" overflow="hidden">
         <Image
-          src={randomImage || "https://picsum.photos/400/300"} // Use random image if none provided
+          src={randomImage || "https://picsum.photos/400/300"}
           alt={product.name}
           objectFit="cover"
           w="100%"
           h="100%"
-          fallbackSrc="https://via.placeholder.com/400x300" // Fallback image
+          fallbackSrc="https://via.placeholder.com/400x300"
         />
         <Badge
           position="absolute"
@@ -50,7 +50,7 @@ const ProductCard = ({ product }: ProductProps) => {
           py={1}
           fontSize="xs"
           fontWeight="bold"
-          bg="rgba(128, 90, 213, 0.8)" // Semi-transparent purple
+          bg="rgba(128, 90, 213, 0.8)"
         >
           {product.categories.name}
         </Badge>
@@ -88,7 +88,7 @@ const ProductCard = ({ product }: ProductProps) => {
             size="sm"
             variant="outline"
             _hover={{ bg: "purple.600", color: "white" }}
-            bg="rgba(128, 90, 213, 0.5)" // Semi-transparent button
+            bg="rgba(128, 90, 213, 0.5)"
             borderColor="purple.400"
             color="purple.100"
           >
