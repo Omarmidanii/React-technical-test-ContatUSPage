@@ -1,0 +1,14 @@
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 420px; 
+  }
+  /* Add scroll margin to all sections */
+[id] {
+  scroll-margin-top: 420px; /* Match navbar height */
+}
+
+/* Optional: Add to specific sections only */
+#home, #products, #ads {
+  scroll-margin-top: 600px;
+}
