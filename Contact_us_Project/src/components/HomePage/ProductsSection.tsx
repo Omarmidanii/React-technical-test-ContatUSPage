@@ -4,7 +4,6 @@ import ProductCard from "./ProductCard";
 import bgimg from "../../assets/ProductsBack.jpg";
 const ProductsSection = () => {
   const { data, isLoading } = useFetchProducts();
-  console.log(data);
   if (isLoading) return <Spinner />;
   return (
     <Box
@@ -12,11 +11,11 @@ const ProductsSection = () => {
       position="relative"
       scrollMarginTop="420px"
       p={8}
-      backgroundImage={`url(${bgimg})`} // Add background image
-      backgroundSize="cover" // Ensure the image covers the entire section
-      backgroundPosition="center" // Center the background image
-      backgroundAttachment="fixed" // Optional: Makes the background fixed while scrolling
-      color="white" // Adjust text color for better contrast
+      backgroundImage={`url(${bgimg})`}
+      backgroundSize="cover"
+      backgroundPosition="center"
+      backgroundAttachment="fixed"
+      color="white"
     >
       <Box
         position="absolute"

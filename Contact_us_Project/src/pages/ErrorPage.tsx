@@ -1,30 +1,32 @@
-import { Box, Grid, GridItem, Heading, Text } from "@chakra-ui/react";
-import { isRouteErrorResponse, useRouteError } from "react-router-dom";
-import { NavBar } from "../components/Layout/NavBar";
-import YALLOW from "../constants";
+// ErrorPa
+import { Box, Button, Heading, Text, VStack } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
+import { WarningIcon } from "@chakra-ui/icons";
+const ErrorPage = () => {
+  const navigate = useNavigate();
 
-export const ErrorPage = () => {
-  const error = useRouteError();
   return (
-    <Grid
-      templateAreas={`"nav" "main"`}
-      bg={YALLOW}
+    <Box
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      minHeight="100vh"
+      bg="gray.50"
     >
-      <GridItem area={"nav"}>
-        <NavBar />
-      </GridItem>
-      
-      <GridItem area={"main"}  borderTopRadius={60}
-        bg={"white"}>
-        <Box padding={5}>
-          <Heading textAlign={'center'}>Oops</Heading>
-          <Text textAlign={'center'}>
-            {isRouteErrorResponse(error)
-              ? "What an achievment!! You found a page that does not even exist!! You can go back if you want :) "
-              : "An unexpected error occurred"}
-          </Text>
-        </Box>
-      </GridItem>
-    </Grid>
+      <WarningIcon w={12} h={12} color="red.500" />
+      <VStack spacing={4} textAlign="center">
+        <Heading as="h1" size="2xl" color="red.500">
+          404
+        </Heading>
+        <Text fontSize="xl" color="gray.700">
+          Oops! The page you're looking for doesn't exist.
+        </Text>
+        <Button colorScheme="teal" onClick={() => navigate("/")} mt={4}>
+          Go Back Home
+        </Button>
+      </VStack>
+    </Box>
   );
 };
+
+export default ErrorPage;
